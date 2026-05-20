@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.ProductRequest;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +22,11 @@ public class ProductController {
     @GetMapping("/search")
     public String search(@RequestParam String name) {
         return "Searching : " + name;
+    }
+
+    @PostMapping
+    public ResponseEntity<?> createProduct(@Valid @RequestBody ProductRequest request) {
+        return ResponseEntity.ok(request);
     }
 
 }
